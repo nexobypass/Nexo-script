@@ -216,7 +216,7 @@ NEXO.DrawingOK = DrawingOK
 -- //================================================================
 
 local KeySystem = {
-    Enabled    = true,                       -- <- set true to require a key
+    Enabled    = True,                       -- <- set true to require a key
     Title      = "NEXO // KEY CHECK",
     Info       = "paste your key below to continue",
     GetKeyLink = "https://discord.gg/HyS5uM7eP9",-- shown to the user (get key button)
