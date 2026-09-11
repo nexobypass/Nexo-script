@@ -1,0 +1,88 @@
+NEXO HUB - SETUP GUIDE
+======================
+
+WHAT YOU GOT
+------------
+NEXO_HUB.lua   - the entire hub in one file (drop-in, no dependencies)
+NEXO_LOADER.lua- the loadstring line users paste into their executor
+
+HOW TO HOST (3 steps)
+---------------------
+1. Make a GitHub account -> new repository, name it:  NEXO-HUB
+   (set it to Public, main branch)
+2. Upload NEXO_HUB.lua into the repo
+3. Your loadstring becomes:
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/YOURNAME/NEXO-HUB/main/NEXO_HUB.lua"))()
+
+Replace YOURNAME with your GitHub username. Done - anyone can run it
+in any executor. To update the hub later, just edit the file on GitHub.
+
+IMPORTANT - 3 THINGS TO EDIT IN THE FILE
+----------------------------------------
+Search for "YOURNAME" in NEXO_HUB.lua:
+  1. The loadstring example at the top (cosmetic)
+  2. The "Copy loadstring" button on the HOME tab
+  3. The Discord + website links on the HOME tab ("YOUR-INVITE" / "your-site.com")
+
+MENU KEY
+--------
+RightShift opens and closes the menu (rebindable in Settings tab).
+The "-" button minimizes to a small pill, "X" fully unloads.
+
+FEATURES
+--------
+UNIVERSAL (works in every game)
+  Player    walk/jump sliders, infinite jump, noclip, fly, click TP,
+            teleport to player
+  Combat    aimbot (FOV + smoothing + target part), silent aim,
+            kill aura, auto clicker, hitbox expander
+  Visuals   player ESP (boxes/names/health/distance/tracers/team check),
+            fullbright, no fog, low graphics, remove textures
+  Utility   anti-AFK, auto rejoin, rejoin, server hop, auto interact
+
+GAME MODULES (auto-detected by PlaceId)
+  Blox Fruits  auto farm, auto attack, fruit ESP/sniper/notifier, chest ESP
+  Da Hood      silent aim, auto attack, cash farm, cash ESP, gun mods
+  MM2          role ESP (murderer/sheriff tags), murderer alert,
+               auto gun grab, coin farm, kill all
+  Blade Ball   auto parry, spam parry, parry distance, ball ESP
+  Arsenal      aimbot, silent aim, ESP, no recoil, rapid fire
+  Pet Sim 99   breakable farm, lootbag collector, breakable/loot ESP
+  Doors        entity ESP + alerts, item ESP, key grab, instant interact,
+               closet warp
+  Adopt Me     orb/candy collector, gift ESP
+
+EXTRA UI FEATURES
+  - search bar (top right) filters every cheat instantly
+  - keybinds: click the [    ] chip on any toggle, press a key
+  - configs: save/load your toggles (Config tab) - persists between sessions
+  - notifications, watermark, UI scale, statusbar with fps/ping
+
+KEY SYSTEM (disabled - ready for later)
+---------------------------------------
+Open NEXO_HUB.lua, find the "KeySystem" table near the top:
+
+local KeySystem = {
+    Enabled    = false,   <-- flip to true
+    GetKeyLink = "https://your-link-here.com",
+    ValidKeys  = {"NEXO-TEST-1234"},
+    Check = nil,          <-- or write function(key) ... end for custom checks
+}
+
+Once Enabled = true, users see a black key screen matching your site
+style before the hub loads. Users can also pass keys with
+getgenv().NEXO_KEY = "..." before the loadstring.
+
+ADDING A NEW GAME (copy-paste pattern)
+--------------------------------------
+Scroll to "GAME DETECTION" near the bottom. Copy any build function
+(like buildMM2), rename it, change the cheats, then add one line:
+
+[1234567890] = {name = "Game Name", build = buildYourGame},
+
+TESTED
+------
+- Syntax validated (Lua compiler, zero errors)
+- Full load-path simulation passed in all 8 games + universal mode
+- Pure Lua 5.1-compatible syntax = maximum executor compatibility
