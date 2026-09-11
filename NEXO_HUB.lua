@@ -216,11 +216,11 @@ NEXO.DrawingOK = DrawingOK
 -- //================================================================
 
 local KeySystem = {
-    Enabled    = false,                       -- <- set true to require a key
+    Enabled    = true,                       -- <- set true to require a key
     Title      = "NEXO // KEY CHECK",
     Info       = "paste your key below to continue",
-    GetKeyLink = "https://your-link-here.com",-- shown to the user (get key button)
-    ValidKeys  = {"NEXO-TEST-1234"},          -- static keys, or leave Check below
+    GetKeyLink = "https://discord.gg/HyS5uM7eP9",-- shown to the user (get key button)
+    ValidKeys  = {"NEXOHub_is-goated"},          -- static keys, or leave Check below
     Attempts   = 5,
     -- custom check (optional). return true to pass.
     Check = nil, -- function(key) return true end
